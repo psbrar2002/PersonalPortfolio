@@ -1,0 +1,30 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#2d2d2d"/>
+
+  <!-- Kotlin Logo -->
+  <g transform="translate(100, 100)">
+    <rect width="80" height="80" fill="#0095d5"/>
+    <polygon points="0,80 80,0 80,80" fill="#c757bc"/>
+    <polygon points="40,40 80,80 0,80" fill="#00a9e0"/>
+  </g>
+
+  <!-- Python Logo -->
+  <g transform="translate(250, 100)">
+    <rect rx="10" ry="10" width="80" height="80" fill="#306998"/>
+    <rect rx="10" ry="10" width="80" height="40" fill="#ffd43b"/>
+    <circle cx="55" cy="20" r="10" fill="#fff"/>
+    <circle cx="25" cy="65" r="10" fill="#fff"/>
+  </g>
+
+  <!-- C++ Logo -->
+  <g transform="translate(400, 100)">
+    <polygon points="40,0 80,20 80,60 40,80 0,60 0,20" fill="#00599C"/>
+    <text x="15" y="55" font-size="35" fill="white" font-family="Arial, sans-serif">C++</text>
+  </g>
+
+  <!-- Labels -->
+  <text x="120" y="210" fill="#fff" font-size="16" font-family="Arial, sans-serif">Kotlin</text>
+  <text x="270" y="210" fill="#fff" font-size="16" font-family="Arial, sans-serif">Python</text>
+  <text x="430" y="210" fill="#fff" font-size="16" font-family="Arial, sans-serif">C++</text>
+</svg>
