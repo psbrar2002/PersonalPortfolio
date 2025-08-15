@@ -6,7 +6,7 @@ import { useRef, useEffect } from 'react';
 import { useGLTF, useAnimations, useVideoTexture } from '@react-three/drei';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-
+import { invalidate } from '@react-three/fiber';
 const DemoComputer = (props) => {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF('/models/computer.glb');
@@ -20,13 +20,23 @@ const DemoComputer = (props) => {
     }
   }, [txt]);
 
-  useGSAP(() => {
-    gsap.from(group.current.rotation, {
-      y: Math.PI / 2,
-      duration: 1,
-      ease: 'power3.out',
-    });
-  }, [txt]);
+  useEffect(() => {
+    if (group.current) {
+      gsap.fromTo(
+        group.current.rotation,
+        { y: Math.PI / 2 },
+        {
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          onUpdate: () => {
+            invalidate(); // Force re-render
+          },
+        }
+      );
+    }
+  }, []);
+  
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -39,7 +49,7 @@ const DemoComputer = (props) => {
           material={nodes['monitor-screen'].material}
           position={[0.127, 1.831, 0.511]}
           rotation={[1.571, -0.005, 0.031]}
-          scale={[0.661, 0.608, 0.401]}>
+          scale={[0.60, 0.608, 0.401]}>
           <meshBasicMaterial map={txt} toneMapped={false} />
         </mesh>
         <group name="RootNode" position={[0, 1.093, 0]} rotation={[-Math.PI / 2, 0, -0.033]} scale={0.045}>
